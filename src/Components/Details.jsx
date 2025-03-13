@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Typography, Avatar, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Opacity } from "@mui/icons-material";
 
 const customers = [
   { id: 1, name: "John Doe", email: "john@example.com" },
@@ -34,7 +35,28 @@ const dataGridStyles = {
     borderBottom: "0.5px solid #374151",
     color: "#E5E7EB",
     display: "flex", 
-    alignItems: "center", // Ensures vertical centering inside all cells
+    alignItems: "center", 
+    borderRight: "1px solid #E5E7EB", 
+
+  }, 
+  "& .MuiDataGrid-iconSeparator": {
+    display: "none",
+  },
+
+  "& .MuiDataGrid-sortIcon, & .MuiDataGrid-menuIcon": {
+    color: "#bbb", 
+  },
+   "& .MuiDataGrid-iconButtonContainer": {
+    visibility: "visible",
+  },
+
+  "& .MuiSvgIcon-root": {
+    color: "#E5E7EB", 
+    Opacity:"1px"
+  },
+  "& .MuiDataGrid-sortIcon": {
+    opacity: "1 !important", 
+    color: "#E5E7EB", 
   },
 
   "& .MuiDataGrid-columnHeaders": {
