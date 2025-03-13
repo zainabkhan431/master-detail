@@ -29,13 +29,34 @@ const dataGridStyles = {
   bgcolor: "#1F2937",
   color: "#E5E7EB",
   borderColor: "#374151",
-  "& .MuiDataGrid-cell": { borderBottom: "1px solid #374151", color: "#E5E7EB" },
-  "& .MuiDataGrid-columnHeaders": {
-    color: "black", 
-    backgroundColor: "#111", 
+
+  "& .MuiDataGrid-cell": {
+    borderBottom: "0.5px solid #374151",
+    color: "#E5E7EB",
+    display: "flex", 
+    alignItems: "center", // Ensures vertical centering inside all cells
   },
+
+  "& .MuiDataGrid-columnHeaders": {
+    color: "white",
+    borderBottom: "0.5px solid #374151",
+  },
+
   "& .MuiDataGrid-footerContainer": {
-    backgroundColor: "#1F2937",
+    backgroundColor: "#111827",
+    color: "white",
+    borderTop: "0.5px solid #374151",
+    "& .MuiTablePagination-root, & .MuiTablePagination-caption, & .MuiSvgIcon-root": {
+      color: "white",
+    },
+  },
+
+  "& .MuiDataGrid-row": {
+    borderBottom: "1px solid rgba(68, 65, 65, 0.2)", 
+  },
+
+  "& .MuiDataGrid-columnSeparator": {
+    "& svg": { width: "0.3px" },
   },
 };
 
@@ -47,7 +68,14 @@ const MasterDetail = () => {
   };
 
   return (
-    <Box sx={{ p: 3, bgcolor: "#111827", minHeight: "100vh", borderRadius: 2 }}>
+    <Box
+      sx={{
+        p: 3,
+        bgcolor: "#111827",
+        minHeight: "100vh",
+        borderRadius: 2,
+      }}
+    >
       <Typography variant="h5" color="white" gutterBottom>
         Customers Table
       </Typography>
@@ -60,8 +88,14 @@ const MasterDetail = () => {
             headerName: "Name",
             flex: 1,
             renderCell: (params) => (
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Avatar sx={{ width: 32, height: 32, mr: 1 }} />
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center", // Ensures Avatar + Name are aligned vertically center
+                  gap: 1, 
+                }}
+              >
+                <Avatar sx={{ width: 32, height: 32 }} />
                 <Typography sx={{ fontWeight: "bold", color: "#E5E7EB" }}>
                   {params.value}
                 </Typography>
@@ -74,7 +108,7 @@ const MasterDetail = () => {
             headerName: "Actions",
             width: 120,
             renderCell: () => (
-              <Box>
+              <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
                 <IconButton sx={{ color: "#3B82F6" }}>
                   <EditIcon />
                 </IconButton>
